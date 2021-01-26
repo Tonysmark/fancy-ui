@@ -26,6 +26,9 @@ $color-green: #30d158;
     display: flex;
     justify-content: center;
     align-items: center;
+    input {
+        display: none;
+    }
     span {
         display: block;
         width: $button-width;
@@ -33,7 +36,9 @@ $color-green: #30d158;
         background-color: $color-grey;
         border-radius: $button-height/2;
         position: relative;
+        transition: all 300ms ease;
         &:before {
+            transition: ease all 300ms;
             content: '';
             position: absolute;
             display: inline-block;
@@ -50,9 +55,26 @@ $color-green: #30d158;
         & + span {
             background-color: $color-green;
         }
-        & + span::after{
-            
+        & + span::before {
+            transform: translateX($button-width - $button-toggle-offset - $toggle-diameter);
+            box-shadow: $toggle-shadow-offset 0 $toggle-shadow-offset * -4 rgba(0, 0, 0, 0.1);
         }
+        &:active + span::before {
+            transform: translateX($button-width - $toggle-wider - $button-toggle-offset);
+        }
+    }
+    input[type='checkbox']:active {
+        & + span:before {
+            width: $toggle-wider;
+        }
+    }
+}
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #1c1c1e;
+    }
+    .switch-wrapper span {
+        background-color: $color-dark-grey;
     }
 }
 </style>
