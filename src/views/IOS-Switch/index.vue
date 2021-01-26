@@ -70,10 +70,10 @@ $color-green: #30d158;
     }
 }
 @media (prefers-color-scheme: dark) {
-    body {
+    .switch-wrapper {
         background-color: #1c1c1e;
     }
-    .switch-wrapper span {
+    span {
         background-color: $color-dark-grey;
     }
 }
